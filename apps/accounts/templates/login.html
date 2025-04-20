@@ -1,27 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}login{% endblock %}
 
 {% block content %}
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login page</title>
-  <!-- TailwindCSS (if you're using CDN for now) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+
   <div id="content">
     <div class="w-full max-w-md p-6 mx-auto mt-2 bg-white border-t-4 border-b-2 border-blue-700 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-blue-600">
 
-      <!-- Replace with Django messages or alerts -->
-      <!-- Example only -->
-      <div class="text-red-600 text-center -mt-5 hidden">
-        Invalid username and password.
-      </div>
+      <!-- Flash messages -->
+        {% if messages %}
+        <div class="p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          {% for message in messages %}
+            <span class="font-medium text-centre">{{ message }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
 
-      <form method="POST" action="/authenticate/" class="space-y-6">
+      <form action="/account/login/" method="post" class="space-y-6">
+        {% csrf_token %}
         <h5 class="text-2xl font-medium text-gray-900 dark:text-white">
           Sign in to our Platform
         </h5>
