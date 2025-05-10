@@ -8,9 +8,6 @@ from .forms import CustomUserCreationForm
 
 
 # Create your views here.
-# def register(request):
-#     # return HttpResponse("This is register page")
-#     return render(request,"register.html",{})
 
 def register(request):
     if request.method == 'POST':
@@ -29,11 +26,11 @@ def register(request):
             print("Form is not valid")
             print(form.errors)
             # return 'home'
-            return render(request, 'register.html', {'form': form})
+            return render(request, 'accounts/register.html', {'form': form})
 
     else:
         form = CustomUserCreationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'accounts/register.html', {'form': form})
 
 
 
@@ -53,17 +50,17 @@ def signin(request):
             return redirect('home')  # Redirect to the home page after login
         else:
             messages.error(request, "Invalid email or password.")
-            return render(request, 'login.html', {'email': email})  # Keep the email pre-filled
-    return render(request, 'login.html')
+            return render(request, 'accounts/login.html', {'email': email})  # Keep the email pre-filled
+    return render(request, 'accounts/login.html')
 
 def home(request):
     # return HttpResponse("This is register page")
-    return render(request,"home.html",{})
+    return render(request,"accounts/home.html",{})
 
 
 @login_required
-def home(request):
-    return render(request, 'home.html')
+def profile(request):
+    return render(request, 'accounts/profile.html')
 
 
 def logout_view(request):

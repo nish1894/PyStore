@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+  <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
+      Shopping Cart
+    </h2>
+
+    <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8 flex-col lg:flex-row">
+      <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl space-y-6">
+
+        {% for item in items %}
+        <div id="cart-item-{{ item.itemId }}">
+          <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+            <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
+              <a href="#" class="shrink-0 md:order-1">
+                <img class="h-20 w-20 rounded-lg object-cover object-center" src="{{ item.itemImage }}" alt="Product Image" />
+              </a>
+
+              <div class="flex items-center justify-between md:order-3 md:justify-end">
+                <div class="flex items-center space-x-2"> <!-- Added space between buttons and input -->
+                  <button type="button" onclick="updateCart({{ item.itemId }}, 'sub')" class="inline-flex h-8 w-8 justify-center items-center bg-gray-200 rounded-full text-gray-600 hover:bg-gray-300">
+                    -
+                  </button>
+
+                  <input type="text" class="w-12 text-center border border-gray-300 rounded-md" value="{{ item.quantity }}" readonly /> <!-- Adjusted input size -->
+
+                  <button type="button" onclick="updateCart({{ item.itemId }}, 'add')" class="inline-flex h-8 w-8 justify-center items-center bg-gray-200 rounded-full text-gray-600 hover:bg-gray-300">
+                    +
+                  </button>
+                </div>
+                <div class="text-end md:order-4 md:w-32">
+                  <p class="text-base font-bold text-gray-900 dark:text-white">${{ item.totalPrice }}</p>
+                </div>
+              </div>
+              <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
+                <a href="#" class="text-base font-medium text-gray-900 hover:underline dark:text-white">
+                  {{ item.title }}
+                </a>
+
+                <div class="flex items-center gap-4">
+                  <button class="inline-flex items-center text-sm text-gray-500 ...">❤️ Add to Favorites</button>
+                  <button onclick="updateCart({{ item.itemId }}, 'remove')" class="inline-flex items-center text-sm text-red-600 ...">🗑 Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
+        <div class="space-y-4 border p-4 shadow-sm dark:bg-gray-800 sm:p-6 ...">
+          <p class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
+          <div class="space-y-4">
+            <dl class="flex justify-between">
+              <dt>Original price</dt>
+              <dd>${{ attr.originalPrice }}</dd>
+            </dl>
+            <dl class="flex justify-between">
+              <dt>Savings</dt>
+              <dd class ="text-green-700">${{ attr.savings }}</dd>
+            </dl>
+            <dl class="flex justify-between">
+              <dt>Delivery Charges</dt>
+              <dd class ="text-green-500">Free</dd>
+            </dl>
+            <dl class="flex justify-between">
+              <dt>Tax</dt>
+              <dd>${{ attr.tax }}</dd>
+            </dl>
+            <dl class="flex justify-between font-bold border-t pt-2">
+              <dt>Total</dt>
+              <dd>${{ attr.total_cart_price }}</dd>
+            </dl>
+          </div>
+
+          <a href="#" class="flex w-full justify-center bg-blue-700 text-white px-5 py-2.5 rounded-lg">Proceed to Checkout</a>
+
+          <div class="flex justify-center gap-2 text-sm">
+            <span>or</span>
+            <a href="#" class="text-blue-700 underline">Continue Shopping →</a>
+          </div>
+        </div>
+
+        <div class="border p-4 shadow-sm dark:bg-gray-800 sm:p-6 ...">
+          <form class="space-y-4">
+            <label for="voucher" class="block text-sm">Voucher Code</label>
+            <input id="voucher" type="text" class="w-full p-2.5 rounded-lg ..." placeholder="Enter code" />
+            <button type="submit" class="w-full bg-blue-700 text-white px-5 py-2.5 rounded-lg">Apply Code</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,4 +1,7 @@
+
 <!DOCTYPE html>
+{% load static %}
+
 <html class="light" lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -43,8 +46,10 @@
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
-
+  <script src="{% static 'cart.js' %}"></script>
   {% block script %}
   {% endblock %}
 </body>
 </html>
+
+

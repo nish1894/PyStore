@@ -110,8 +110,14 @@
       </a>
 
       <!-- Cart button -->
-      <a href="#" class="flex items-center text-gray-700 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500">
+      <a href="/cart" class="flex items-center relative text-gray-700 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-500">
         <i class="fa-solid fa-cart-shopping text-xl"></i>
+        <!--cart counter-->
+        <span id="cart-counter"
+              class="absolute inline-flex items-center justify-center px-1.5 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full"
+              style="top: -15px; right: -13px;">
+
+      </span>
       </a>
 
       <!-- Mobile menu toggle button -->
