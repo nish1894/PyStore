@@ -23,10 +23,22 @@
   class="fixed top-25 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
   aria-label="Filters">
   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-    <div class="mb-6"><label class="text-sm font-medium text-gray-900 dark:text-white mb-2 block">Search</label><input type="search" placeholder="Search products..." class="w-full p-2.5 text-sm rounded-lg border" /></div>
-    <div class="mb-6"><label class="text-sm font-medium text-gray-900 dark:text-white mb-2 block">Sort By</label><select class="w-full p-2.5 text-sm rounded-lg border"><option>Featured</option><option>Price: Low to High</option></select></div>
+    <div class="mb-6"><label class="text-sm font-medium text-gray-900 dark:text-white mb-2 block">Search</label><input id = "searchInput" type="search" placeholder="Search products..." class="w-full p-2.5 text-sm rounded-lg border" /></div>
+    <div class="mb-6"><label class="text-sm font-medium text-gray-900 dark:text-white mb-2 block">Sort By</label>
+      <select id = "sortSelect" class="w-full p-2.5 text-sm rounded-lg border">
+        <option value="rating,asc">Featured</option>
+        <option value="price,asc">Price: Low to High</option>
+        <option value="price,desc">Price: High to Low</option>
+        <option value="title,asc">Title A-Z</option>
+        <option value="title,desc">Title Z-A</option>
+    </select></div>
     <div class="mb-6"><label class="text-sm font-medium text-gray-900 dark:text-white mb-2 block">Price Range</label><div class="grid grid-cols-2 gap-4"><input type="number" placeholder="Min" class="p-2 border rounded-lg" /><input type="number" placeholder="Max" class="p-2 border rounded-lg" /></div></div>
-    <div class="mb-6"><h3 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Categories</h3><ul class="space-y-2"><li><input type="checkbox" /> <label>Men's Clothing</label></li><li><input type="checkbox" /> <label>Electronics</label></li></ul></div>
+    <div class="mb-6"><h3 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Categories</h3><ul class="space-y-2"><li>
+        <input type="checkbox" /> <label>Men's Clothing</label></li><li>
+        <input type="checkbox" /> <label>Women's Clothing</label></li><li>
+        <input type="checkbox" /> <label>Jewelery</label></li><li>
+        <input type="checkbox" /> <label>Electronics</label></li></ul>
+    </div>
     <div class="mb-6"><h3 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Colors</h3><div class="flex gap-2"><button class="w-6 h-6 rounded-full bg-red-500"></button><button class="w-6 h-6 rounded-full bg-blue-500"></button></div></div>
     <div class="mb-6"><h3 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Rating</h3><label><input type="radio" name="rating" /> <span class="text-sm">★★★★☆ & up</span></label></div>
     <button class="w-full bg-blue-600 text-white py-2 rounded-lg">Apply Filters</button>
